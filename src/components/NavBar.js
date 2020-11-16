@@ -1,17 +1,29 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { FaBars } from 'react-icons/fa';
+import PriNavLogo from '../images/primary-nav-logo.png';
 
 const NavBar = () => {
-    return (
-        <NavBarContainer>
-            <LinksContainer>
-
-            </LinksContainer>
-            <ShoppingCart>
-
-            </ShoppingCart>
-        </NavBarContainer>
-    )
+  return (
+    <NavBarContainer>
+      <LinksContainer>
+        <NavLink to="/">BIENVENDIOS</NavLink>
+        <NavLink to="/">MENU</NavLink>
+        <NavLogo src={PriNavLogo} alt="El Alma Logo" />
+        <NavLink to="/">CONTACT</NavLink>
+        <NavH1 to="/">WE ARE OPEN</NavH1>
+      </LinksContainer>
+      <ShoppingCartIcon />
+      <MobileLinksContainer>
+        <NavLogo src={PriNavLogo} alt="El Alma Logo" />
+        <MobileIconContainer>
+          <BarsLogo />
+        </MobileIconContainer>
+      </MobileLinksContainer>
+    </NavBarContainer>
+  )
 }
 
 export default NavBar;
@@ -27,15 +39,76 @@ const NavBarContainer = styled.nav`
 `;
 const LinksContainer = styled.div`
   height: 55px;
-  width: 60%;
-  background: red;
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 765px;
+  max-width: 1100px;
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 `;
-const ShoppingCart = styled.div`
+const NavLink = styled(Link)`
+  color: #fefefe;
+  cursor: pointer;
+  font-family: 'Archivo Black';
+  font-size: 17px;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+`;
+const NavH1 = styled.h1`
+  color: #fefefe;
+  cursor: pointer;
+  font-family: 'Archivo Black';
+  font-size: 17px;
+  letter-spacing: 0.1em;
+  border-bottom: 2px solid #fefefe;
+  margin-top: 20px;
+`;
+const NavLogo = styled.img`
+  height: 55px;
+`;
+const ShoppingCartIcon = styled(AiOutlineShoppingCart)`
+  font-size: 35px;
+  color: #fefefe;
+  align-content: center;
+  position: absolute;
+  right: 25px;
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+`;
+const MobileLinksContainer = styled.div`
+  display: none;
+  height: 55px;
+  width: 94%;
+  background: lightblue;
+
+  @media screen and (max-width: 900px) {
+    display: block;
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+const MobileIconContainer = styled.div`
+  display: none;
   height: 55px;
   width: 55px;
   background: red;
-  position: absolute;
-  right: 15px;
-  align-content: center;
+
+  @media screen and (max-width: 900px) {
+    display: block;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
 `;
+const BarsLogo = styled(FaBars)`
+  font-size: 35px;
+  color: white;
+`;
+
 
