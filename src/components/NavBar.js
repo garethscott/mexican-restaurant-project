@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaBars } from 'react-icons/fa';
-import { CgClose } from 'react-icons/cg';
 import PriNavLogo from '../images/primary-nav-logo.png';
 import MobileMenu from './MobileMenu';
+import XLogoImg from '../images/close-logo.png';
 
 const NavBar = () => {
   const [click, setClick] = useState(false);
@@ -28,7 +28,7 @@ const NavBar = () => {
         <MobileLinksContainer>
           <NavLogo src={PriNavLogo} alt="El Alma Logo" />
           <MobileIconContainer onClick={handleClick}>
-            {click ? <XLogo /> : <BarsLogo />}
+            {click ? <XLogo src={XLogoImg} /> : <BarsLogo />}
           </MobileIconContainer>
         </MobileLinksContainer>
       </NavBarContainer>
@@ -121,9 +121,9 @@ const BarsLogo = styled(FaBars)`
   font-size: 35px;
   color: white;
 `;
-const XLogo = styled(CgClose)`
-  font-size: 60px;
-  color: white;
+const XLogo = styled.img`
+  width: 30px;
+  height: 30px;
 `;
 
 
