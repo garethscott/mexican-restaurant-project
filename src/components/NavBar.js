@@ -1,28 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaBars } from 'react-icons/fa';
+import { CgClose } from 'react-icons/cg';
 import PriNavLogo from '../images/primary-nav-logo.png';
+import MobileMenu from './MobileMenu';
 
 const NavBar = () => {
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => setClick(!click);
+
+
+
   return (
-    <NavBarContainer>
-      <LinksContainer>
-        <NavLink to="/">BIENVENDIOS</NavLink>
-        <NavLink to="/">MENU</NavLink>
-        <NavLogo src={PriNavLogo} alt="El Alma Logo" />
-        <NavLink to="/">CONTACT</NavLink>
-        <NavH1 to="/">WE ARE OPEN</NavH1>
-      </LinksContainer>
-      <ShoppingCartIcon />
-      <MobileLinksContainer>
-        <NavLogo src={PriNavLogo} alt="El Alma Logo" />
-        <MobileIconContainer>
-          <BarsLogo />
-        </MobileIconContainer>
-      </MobileLinksContainer>
-    </NavBarContainer>
+    <>
+      <NavBarContainer>
+        <LinksContainer>
+          <NavLink to="/">BIENVENDIOS</NavLink>
+          <NavLink to="/">MENU</NavLink>
+          <NavLogo src={PriNavLogo} alt="El Alma Logo" />
+          <NavLink to="/">CONTACT</NavLink>
+          <NavH1 to="/">WE ARE OPEN</NavH1>
+        </LinksContainer>
+        <ShoppingCartIcon />
+        <MobileLinksContainer>
+          <NavLogo src={PriNavLogo} alt="El Alma Logo" />
+          <MobileIconContainer onClick={handleClick}>
+            {click ? <XLogo /> : <BarsLogo />}
+          </MobileIconContainer>
+        </MobileLinksContainer>
+      </NavBarContainer>
+      <MobileMenu click={click} handleClick={handleClick} />
+    </>
   )
 }
 
@@ -85,19 +96,19 @@ const MobileLinksContainer = styled.div`
   display: none;
   height: 55px;
   width: 94%;
-  background: lightblue;
 
   @media screen and (max-width: 900px) {
     display: block;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 `;
 const MobileIconContainer = styled.div`
   display: none;
-  height: 55px;
-  width: 55px;
-  background: red;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
 
   @media screen and (max-width: 900px) {
     display: block;
@@ -110,5 +121,11 @@ const BarsLogo = styled(FaBars)`
   font-size: 35px;
   color: white;
 `;
+const XLogo = styled(CgClose)`
+  font-size: 60px;
+  color: white;
+`;
+
+
 
 
