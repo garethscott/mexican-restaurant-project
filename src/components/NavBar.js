@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaBars } from 'react-icons/fa';
 import PriNavLogo from '../images/primary-nav-logo.png';
+import MobileLogoImg from '../images/mobile-nav-logo.png';
 import MobileMenu from './MobileMenu';
 import XLogoImg from '../images/close-logo.png';
 
@@ -11,6 +12,14 @@ const NavBar = () => {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
+
+  const showMenu = () => {
+    if (window.innerWidth >= 900) {
+      setClick(false);
+    }
+  }
+
+  window.addEventListener('resize', showMenu);
 
 
 
@@ -26,7 +35,7 @@ const NavBar = () => {
         </LinksContainer>
         <ShoppingCartIcon />
         <MobileLinksContainer>
-          <NavLogo src={PriNavLogo} alt="El Alma Logo" />
+          <MobileLogo src={MobileLogoImg} alt="El Alma Logo" />
           <MobileIconContainer onClick={handleClick}>
             {click ? <XLogo src={XLogoImg} /> : <BarsLogo />}
           </MobileIconContainer>
@@ -95,7 +104,7 @@ const ShoppingCartIcon = styled(AiOutlineShoppingCart)`
 const MobileLinksContainer = styled.div`
   display: none;
   height: 55px;
-  width: 94%;
+  width: 92%;
 
   @media screen and (max-width: 900px) {
     display: block;
@@ -118,12 +127,15 @@ const MobileIconContainer = styled.div`
   }
 `;
 const BarsLogo = styled(FaBars)`
-  font-size: 35px;
+  font-size: 30px;
   color: white;
 `;
 const XLogo = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
+`;
+const MobileLogo = styled.img`
+   height: 40px;
 `;
 
 
