@@ -41,7 +41,8 @@ const LinksContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  display: ${({ click }) => (click ? 'none' : 'inline-block')}
+  justify-content: center;
+//   display: ${({ click }) => (click ? 'none' : 'inline-block')}
 `;
 const MenuLinks = styled(Link)`
   background-color: transparent;
@@ -57,7 +58,7 @@ const MenuLinks = styled(Link)`
   width: 100%;
 
   &:hover {
-      background-color: lightblue;
+      background-color: #03cefa;
       color: #782e5a;
       transition: 0.5s ease-in-out;
   }
@@ -79,7 +80,7 @@ const OrderButton = styled.div`
   border-radius: 5px;
 
   &:hover {
-    background-color: lightblue;
+    background-color: #03cefa;
     color: #782e5a;
     transition: 0.5s ease-in-out;
     border: none;

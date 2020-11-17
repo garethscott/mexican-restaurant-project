@@ -24,7 +24,7 @@ const NavBar = () => {
 
 
   return (
-    <>
+    <FixedNav>
       <NavBarContainer>
         <LinksContainer>
           <NavLink to="/">BIENVENDIOS</NavLink>
@@ -42,13 +42,19 @@ const NavBar = () => {
         </MobileLinksContainer>
       </NavBarContainer>
       <MobileMenu click={click} handleClick={handleClick} />
-    </>
+    </FixedNav>
   )
 }
 
 export default NavBar;
-
-const NavBarContainer = styled.nav`
+const FixedNav = styled.nav`
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+`;
+const NavBarContainer = styled.div`
   width: 100%;
   height: 80px;
   background-color: #471633;
@@ -77,6 +83,11 @@ const NavLink = styled(Link)`
   font-size: 17px;
   letter-spacing: 0.1em;
   text-decoration: none;
+
+  &:hover {
+    color: #03cefa;
+    transition: 0.2s ease-in-out;
+}
 `;
 const NavH1 = styled.h1`
   color: #fefefe;
@@ -96,6 +107,11 @@ const ShoppingCartIcon = styled(AiOutlineShoppingCart)`
   align-content: center;
   position: absolute;
   right: 25px;
+
+  &:hover {
+    color: #03cefa;
+    transition: 0.4s ease-in-out;
+}
 
   @media screen and (max-width: 900px) {
     display: none;
