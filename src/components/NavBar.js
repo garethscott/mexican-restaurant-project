@@ -21,8 +21,6 @@ const NavBar = () => {
 
   window.addEventListener('resize', showMenu);
 
-
-
   return (
     <FixedNav>
       <NavBarContainer>
@@ -83,6 +81,7 @@ const NavLink = styled(Link)`
   font-size: 17px;
   letter-spacing: 0.1em;
   text-decoration: none;
+  cursor: pointer;
 
   &:hover {
     color: #03cefa;

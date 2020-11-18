@@ -26,7 +26,7 @@ const MobMenuContainer = styled.aside`
   justify-content: center;
   width: 100%;
   height: 100vh;
-  background: ${({ click }) => (click ? '#782e5a' : 'transparent')};
+  background: ${({ click }) => (click ? '#782e59' : 'transparent')};
   position: fixed;
   top: 80px;
   left: ${({ click }) => (click ? '0' : '-3000px')};
