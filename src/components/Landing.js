@@ -3,15 +3,19 @@ import styled from 'styled-components';
 import LandImgBig from '../images/landing-img.jpg';
 import LandImgSmall from '../images/landing-img-small-1.jpg';
 import LandingLogoMedium from '../images/landing-logo-medium.png';
+import LandingLogoLarge from '../images/landing-logo-large.png';
 
 const Landing = () => {
   const [swapLandImg, setSwapLandImg] = useState(false);
+  const [swapLandLogo, setSwapLandLogo] = useState(false);
 
   const handleSwapImg = () => {
     if (window.innerWidth > 1795 || window.innerHeight > 1010) {
       setSwapLandImg(true);
+      setSwapLandLogo(true);
     } else {
       setSwapLandImg(false);
+      setSwapLandLogo(false);
     }
   }
 
@@ -19,7 +23,7 @@ const Landing = () => {
 
   return (
     <LandingContainer swapLandImg={swapLandImg}>
-      <LandingLogo src={LandingLogoMedium} />
+      {swapLandLogo ? (<LandingLogoLar src={LandingLogoLarge} />) : (<LandingLogoMed src={LandingLogoMedium} />)}
     </LandingContainer>
   )
 }
@@ -36,7 +40,9 @@ const LandingContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const LandingLogo = styled.img`
-  // width: 685px;
+const LandingLogoMed = styled.img`
   width: min(100%, 685px);
+`;
+const LandingLogoLar = styled.img`
+  width: 900px;
 `;
