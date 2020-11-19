@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import LandImgBig from '../images/landing-img.jpg';
 import LandImgSmall from '../images/landing-img-small-1.jpg';
+import LandingLogoMedium from '../images/landing-logo-medium.png';
 
 const Landing = () => {
   const [swapLandImg, setSwapLandImg] = useState(false);
@@ -18,7 +19,7 @@ const Landing = () => {
 
   return (
     <LandingContainer swapLandImg={swapLandImg}>
-
+      <LandingLogo src={LandingLogoMedium} />
     </LandingContainer>
   )
 }
@@ -31,4 +32,11 @@ const LandingContainer = styled.div`
   background-position: center;
   height: 100vh;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const LandingLogo = styled.img`
+  // width: 685px;
+  width: min(100%, 685px);
 `;
