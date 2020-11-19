@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import LandImgBig from '../images/landing-img.jpg';
-import LandImgSmall from '../images/landing-img-small.jpg';
+import LandImgSmall from '../images/landing-img-small-1.jpg';
 
 const Landing = () => {
   const [swapLandImg, setSwapLandImg] = useState(false);
 
   const handleSwapImg = () => {
-    if (window.innerWidth > 1760 || window.innerHeight > 990) {
+    if (window.innerWidth > 1795 || window.innerHeight > 1010) {
       setSwapLandImg(true);
     } else {
       setSwapLandImg(false);

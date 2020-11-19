@@ -3,19 +3,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const MobileMenu = ({ click, handleClick }) => {
-    return (
-        <MobMenuContainer click={click} onClick={handleClick}>
-            <LinksContainer>
-                <MenuLinks to="/">BIENVENDIOS</MenuLinks>
-                <MenuLinks to="/">TACOS</MenuLinks>
-                <MenuLinks to="/">BURRITOS</MenuLinks>
-                <MenuLinks to="/">BURGERS</MenuLinks>
-                <MenuLinks to="/">SIDES</MenuLinks>
-                <MenuLinks to="/">DRINKS</MenuLinks>
-                <OrderButton to="/">VIEW YOUR ORDER</OrderButton>
-            </LinksContainer>
-        </MobMenuContainer>
-    )
+  return (
+    <MobMenuContainer click={click} onClick={handleClick}>
+      <LinksContainer>
+        <MenuLinks to="/">BIENVENDIOS</MenuLinks>
+        <MenuLinks to="/">TACOS</MenuLinks>
+        <MenuLinks to="/">BURRITOS</MenuLinks>
+        <MenuLinks to="/">BURGERS</MenuLinks>
+        <MenuLinks to="/">SIDES</MenuLinks>
+        <MenuLinks to="/">DRINKS</MenuLinks>
+        <OrderButton to="/">VIEW YOUR ORDER</OrderButton>
+      </LinksContainer>
+    </MobMenuContainer>
+  )
 }
 
 export default MobileMenu;
@@ -31,6 +31,7 @@ const MobMenuContainer = styled.aside`
   top: 80px;
   left: ${({ click }) => (click ? '0' : '-3000px')};
   transition: all 0.5s ease;
+  overflow-y: scroll;
 
   @media screen and (max-width: 900px) {
     display: block;
