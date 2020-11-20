@@ -21,9 +21,9 @@ const MobileMenu = ({ click, handleClick }) => {
 export default MobileMenu;
 
 const MobMenuContainer = styled.aside`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
   width: 100%;
   height: 100vh;
   background: ${({ click }) => (click ? '#782e59' : 'transparent')};
@@ -34,7 +34,7 @@ const MobMenuContainer = styled.aside`
   overflow-y: scroll;
 
   @media screen and (max-width: 900px) {
-    display: block;
+    display: block;  
   }
 `;
 const LinksContainer = styled.div`
@@ -43,7 +43,6 @@ const LinksContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-//   display: ${({ click }) => (click ? 'none' : 'inline-block')}
 `;
 const MenuLinks = styled(Link)`
   background-color: transparent;
@@ -57,6 +56,8 @@ const MenuLinks = styled(Link)`
   text-decoration: none;
   height: 70px;
   width: 100%;
+  // padding: 30px 100%;
+  
 
   &:hover {
       background-color: #03cefa;

@@ -23,7 +23,10 @@ const Landing = () => {
 
   return (
     <LandingContainer swapLandImg={swapLandImg}>
-      {swapLandLogo ? (<LandingLogoLar src={LandingLogoLarge} />) : (<LandingLogoMed src={LandingLogoMedium} />)}
+      {swapLandLogo ?
+        (<LandingLogoLar src={LandingLogoLarge} />
+        ) : (
+          <LandingLogoMed src={LandingLogoMedium} />)}
     </LandingContainer>
   )
 }
@@ -41,8 +44,20 @@ const LandingContainer = styled.div`
   align-items: center;
 `;
 const LandingLogoMed = styled.img`
-  width: min(100%, 685px);
+  width: min(100%, 850px);
+  margin-bottom: 150px;
+
+  @media screen and (max-height: 540px) {
+    height: min(100%, 685px);
+    width: auto;
+  }
 `;
 const LandingLogoLar = styled.img`
-  width: 900px;
+  width: 1050px;
+  margin-bottom: 150px;
+
+  @media screen and (max-width: 900px) {
+    width: min(100%, 1050px);
+  }
+
 `;
