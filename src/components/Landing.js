@@ -42,6 +42,7 @@ const LandingContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
 `;
 const LandingLogoMed = styled.img`
   width: min(100%, 850px);
