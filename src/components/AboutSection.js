@@ -11,25 +11,31 @@ const AboutSection = () => {
     const [swapLargeFade, setSwapLargeFade] = useState(false);
 
     const handleShowAboutImg = () => {
-        if (window.scrollY > 50) {
+        if (window.scrollY >= 1) {
             setShowAboutImg(true);
-            setSwapLargeFade(true);
-        } else if (window.scrollY < 10) {
+        } else if (window.scrollY < 1) {
             setShowAboutImg(false);
-            setSwapLargeFade(false);
         }
     }
 
     window.addEventListener('scroll', handleShowAboutImg);
 
+    const handleSwapLargeImgFade = () => {
+        if (window.scrollY >= 1) {
+            setSwapLargeFade(true)
+        } else if (window.scrollY < 1) {
+            setSwapLargeFade(false)
+        }
+    }
+
     const handleSwapBgImg = () => {
         if (window.innerWidth > 1795 || window.innerHeight > 1010) {
             setSwapAboutImg(true);
+            window.addEventListener('scroll', handleSwapLargeImgFade);
         } else {
             setSwapAboutImg(false);
         }
     }
-
 
     window.addEventListener('resize', handleSwapBgImg);
 
@@ -49,6 +55,7 @@ const AboutContainer = styled.div`
   width: 100%;
   height: 907px;
   background: url(${({ showAboutImg }) => (showAboutImg ? AboutBgImage : AboutBgImageNoFade)});
+  background-size: cover;
   background-position: center;
   margin-top: 0px;
   
@@ -57,10 +64,15 @@ const AboutContainer = styled.div`
   `}
 
   ${({ swapAboutImg }) => swapAboutImg && `
-  background: url(${LgAboutImgNoFade});
-  width: 100%;
-  height: 1296px;
-    // background: url(${({ swapLargeFade }) => (swapLargeFade ? LgAboutImg : LgAboutImgNoFade)});
+    width: 100%;
+    height: 1296px;
+    background-size: cover;
+    background-position: center;
+    background: url(${({ swapLargeFade }) => (swapLargeFade ? LgAboutImg : LgAboutImgNoFade)});
+  `}
+
+  ${({ swapLargeFade }) => swapLargeFade &&`
+    margin-top: -30px;
   `}
 `;
 
