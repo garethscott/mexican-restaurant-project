@@ -51,7 +51,7 @@ const FixedNav = styled.nav`
   position: fixed;
   top: 0px;
   left: 0px;
-  // display: none;
+  display: none;
 `;
 const NavBarContainer = styled.div`
   width: 100%;

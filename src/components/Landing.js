@@ -4,6 +4,7 @@ import LandImgBig from '../images/landing-img.jpg';
 import LandImgSmall from '../images/landing-img-small-1.jpg';
 import LandingLogoMedium from '../images/landing-logo-medium.png';
 import LandingLogoLarge from '../images/landing-logo-large.png';
+import LandNavBar from './LandNavBar';
 
 const Landing = () => {
   const [swapLandImg, setSwapLandImg] = useState(false);
@@ -23,10 +24,13 @@ const Landing = () => {
 
   return (
     <LandingContainer swapLandImg={swapLandImg}>
+      <LandNavBar />
+      <LogoContainer>
       {swapLandLogo ?
         (<LandingLogoLar src={LandingLogoLarge} />
         ) : (
           <LandingLogoMed src={LandingLogoMedium} />)}
+      </LogoContainer>    
     </LandingContainer>
   )
 }
@@ -40,13 +44,20 @@ const LandingContainer = styled.div`
   height: 100vh;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   margin: 0;
 `;
+const LogoContainer = styled.div`
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const LandingLogoMed = styled.img`
   width: min(100%, 850px);
-  margin-bottom: 150px;
 
   @media screen and (max-height: 540px) {
     height: min(100%, 685px);
@@ -55,7 +66,6 @@ const LandingLogoMed = styled.img`
 `;
 const LandingLogoLar = styled.img`
   width: 1050px;
-  margin-bottom: 150px;
 
   @media screen and (max-width: 900px) {
     width: min(100%, 1050px);
