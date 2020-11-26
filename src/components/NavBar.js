@@ -10,6 +10,7 @@ import XLogoImg from '../images/close-logo.png';
 
 const NavBar = () => {
   const [click, setClick] = useState(false);
+  const [showNavBar, setShowNavBar] = useState(false);
 
   const handleClick = () => setClick(!click);
 
@@ -21,8 +22,18 @@ const NavBar = () => {
 
   window.addEventListener('resize', showMenu);
 
+  const handleShowNavBar = () => {
+    if (window.scrollY >= 1) {
+      setShowNavBar(true);
+    } else if (window.scrollY < 1) {
+      setShowNavBar(false);
+    }
+  }
+
+  window.addEventListener('scroll', handleShowNavBar);
+
   return (
-    <FixedNav>
+    <FixedNav showNavBar={showNavBar}>
       <NavBarContainer>
         <LinksContainer>
           <NavLink to="/">BIENVENDIOS</NavLink>
@@ -49,14 +60,16 @@ const FixedNav = styled.nav`
   width: 100%;
   height: 80px;
   position: fixed;
-  top: 0px;
+  top: ${({ showNavBar }) => (showNavBar ? '0' : '-80px')};
   left: 0px;
-  display: none;
+  opacity: ${({ showNavBar }) => (showNavBar ? '1' : '0')};
+  transition: all 0.5s ease-in-out;
 `;
 const NavBarContainer = styled.div`
   width: 100%;
   height: 80px;
   background-color: #471633;
+  transition: all 0.5s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;

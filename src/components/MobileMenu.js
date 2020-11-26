@@ -21,9 +21,6 @@ const MobileMenu = ({ click, handleClick }) => {
 export default MobileMenu;
 
 const MobMenuContainer = styled.aside`
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
   width: 100%;
   height: 100vh;
   background: ${({ click }) => (click ? '#782e59' : 'transparent')};

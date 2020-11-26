@@ -5,6 +5,9 @@ import LandImgSmall from '../images/landing-img-small-1.jpg';
 import LandingLogoMedium from '../images/landing-logo-medium.png';
 import LandingLogoLarge from '../images/landing-logo-large.png';
 import LandNavBar from './LandNavBar';
+import { BsChevronDown } from 'react-icons/bs';
+
+
 
 const Landing = () => {
   const [swapLandImg, setSwapLandImg] = useState(false);
@@ -26,11 +29,12 @@ const Landing = () => {
     <LandingContainer swapLandImg={swapLandImg}>
       <LandNavBar />
       <LogoContainer>
-      {swapLandLogo ?
-        (<LandingLogoLar src={LandingLogoLarge} />
-        ) : (
-          <LandingLogoMed src={LandingLogoMedium} />)}
-      </LogoContainer>    
+        {swapLandLogo ?
+          (<LandingLogoLar src={LandingLogoLarge} />
+          ) : (
+            <LandingLogoMed src={LandingLogoMedium} />)}
+      </LogoContainer>
+      <DownArrowLogo />
     </LandingContainer>
   )
 }
@@ -70,5 +74,10 @@ const LandingLogoLar = styled.img`
   @media screen and (max-width: 900px) {
     width: min(100%, 1050px);
   }
-
+`;
+const DownArrowLogo = styled(BsChevronDown)`
+  color: rgba(255, 255, 255);
+  font-size: 100px;
+  margin-right: 25px;
+  margin-bottom: 20px;
 `;
