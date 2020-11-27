@@ -6,39 +6,44 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const LandNavBar = () => {
     const [showMenu, setShowMenu] = useState(false);
+    const [menuWhite, setMenuWhite] = useState('rgba(255, 255, 255, 0.6)');
 
     const handleShowMenu = () => {
         setShowMenu(true);
-        console.log(showMenu);
+        setMenuWhite('rgba(255, 255, 255, 1)');
     }
+
     const handleHideMenu = () => {
         setShowMenu(false);
-        console.log(showMenu);
+        setMenuWhite('rgba(255, 255, 255, 0.6)');
     }
 
-    console.log(showMenu);
-
     return (
-        <NavBarContainer>
+        <NavBarContainer showMenu={showMenu}>
             <LinksContainer>
                 <NavLink to="/">BIENVENDIOS</NavLink>
-                <NavLink
+                <MenuLink
                     onMouseEnter={handleShowMenu}
-                    onMouseOut={handleHideMenu}
+                    onMouseLeave={handleHideMenu}
+                    menuwhite={menuWhite}
                     to="/">MENU
-                </NavLink>
+                </MenuLink>
                 <NavLink to="/">CONTACT</NavLink>
+                <DropDownMenuContainer
+                    showMenu={showMenu}
+                    onMouseEnter={handleShowMenu}
+                    onMouseLeave={handleHideMenu}
+                >
+                    <DropNavLink to="/">TACOS</DropNavLink>
+                    <DropNavLink to="/">BURRITOS</DropNavLink>
+                    <DropNavLink to="/">BURGERS</DropNavLink>
+                    <DropNavLink to="/">SIDES</DropNavLink>
+                    <DropNavLink to="/">DRINKS</DropNavLink>
+                </DropDownMenuContainer>
             </LinksContainer>
             <ShoppingCartContainer>
                 <ShoppingCartIcon />
             </ShoppingCartContainer>
-            <DropDownMenuContainer showMenu={showMenu} onMouseEnter={handleShowMenu} onMouseOut={handleHideMenu}>
-                <DropNavLink to="/">TACOS</DropNavLink>
-                <DropNavLink to="/">BURRITOS</DropNavLink>
-                <DropNavLink to="/">BURGERS</DropNavLink>
-                <DropNavLink to="/">SIDES</DropNavLink>
-                <DropNavLink to="/">DRNKS</DropNavLink>
-            </DropDownMenuContainer>
         </NavBarContainer>
     )
 }
@@ -52,32 +57,46 @@ const NavBarContainer = styled.nav`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    position: relative;
+
+    @media screen and (max-width: 960px) {
+        display: none;
+    }
 `;
 const LinksContainer = styled.div`
     width: 400px;
     height: 50px;
-    // background: yellow;
     display: flex;
     justify-content: flex-end;
     margin-left: 25px;
+    position: relative;
 
 `;
 const NavLink = styled(Link)`
-   color: rgba(255, 255, 255, 0.6);
-   cursor: pointer;
-   font-family: 'Archivo Black';
-   font-size: 16px;
-   letter-spacing: 0.1em;
-   text-decoration: none;
-   cursor: pointer;   
-   margin-top: 8px;
-   margin-right: 25px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    font-family: 'Archivo Black';
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    cursor: pointer;   
+    margin-top: 8px;
+    margin-right: 25px;
 
-   &:hover {
-    color: rgba(255, 255, 255, 1);;
-    transition: 0.3s ease-in-out;
+    &:hover {
+      color: rgba(255, 255, 255, 1);;
+      transition: 0.3s ease-in-out;
 }
+`;
+const MenuLink = styled(Link)`
+    color: ${props => props.menuwhite};
+    cursor: pointer;
+    font-family: 'Archivo Black';
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    cursor: pointer;   
+    margin-top: 8px;
+    margin-right: 25px;
 `;
 const ShoppingCartContainer = styled.div`
    width: 30px;
@@ -97,21 +116,26 @@ const ShoppingCartIcon = styled(AiOutlineShoppingCart)`
 }
 `;
 const DropDownMenuContainer = styled.nav` 
-   height: 115px;
-   width: 200px;
-   padding-left: 20px;
-   visibility: ${({ showMenu }) => (showMenu ? 'visible' : 'hidden')};
-   position: absolute;
-   top: 35px;
-   right: 62px;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
+    height: 115px;
+    width: 200px;
+    padding-left: 20px;
+    visibility: ${({ showMenu }) => (showMenu ? 'visible' : 'hidden')};
+    position: absolute;
+    top: 33px;
+    right: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 `;
 const DropNavLink = styled(Link)`
-   color: rgba(255, 255, 255, 1);
-   font-family: 'Archivo Black';
-   font-size: 16px;
-   margin: 0;
-   text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Archivo Black';
+    font-size: 16px;
+    margin: 0;
+    text-decoration: none;
+
+    &:hover {
+      color: rgba(255, 255, 255, 1);
+      transition: 0.2s ease-in-out;
+}
 `;
