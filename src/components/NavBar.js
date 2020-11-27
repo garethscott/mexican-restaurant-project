@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
@@ -7,10 +7,16 @@ import PriNavLogo from '../images/primary-nav-logo.png';
 import MobileLogoImg from '../images/mobile-nav-logo.png';
 import MobileMenu from './MobileMenu';
 import XLogoImg from '../images/close-logo.png';
+import DropDown from './DropDown';
 
 const NavBar = () => {
   const [click, setClick] = useState(false);
   const [showNavBar, setShowNavBar] = useState(false);
+  const [showDropDown, setShowDropDown] = useState(false);
+
+  useEffect(() => {
+    setShowDropDown(false);
+  }, []);
 
   const handleClick = () => setClick(!click);
 
@@ -32,15 +38,28 @@ const NavBar = () => {
 
   window.addEventListener('scroll', handleShowNavBar);
 
+  const handleShowDropDown = () => {
+    setShowDropDown(true);
+  }
+
+  const handleHideDropDown = () => {
+    setShowDropDown(false);
+  }
+
   return (
     <FixedNav showNavBar={showNavBar}>
       <NavBarContainer>
         <LinksContainer>
+          <NavLink
+            to="/"
+            onMouseEnter={handleShowDropDown}
+            onMouseLeave={handleHideDropDown}>MENU
+          </NavLink>
           <NavLink to="/">BIENVENDIOS</NavLink>
-          <NavLink to="/">MENU</NavLink>
           <NavLogo src={PriNavLogo} alt="El Alma Logo" />
           <NavLink to="/">CONTACT</NavLink>
           <NavH1 to="/">WE ARE OPEN</NavH1>
+          <DropDown showdropdown={showDropDown} />
         </LinksContainer>
         <ShoppingCartIcon />
         <MobileLinksContainer>
@@ -84,6 +103,7 @@ const LinksContainer = styled.div`
   align-items: center;
   min-width: 765px;
   max-width: 1100px;
+  position: relative;
 
   @media screen and (max-width: 900px) {
     display: none;
