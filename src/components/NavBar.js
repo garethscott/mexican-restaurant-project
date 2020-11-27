@@ -64,6 +64,7 @@ const FixedNav = styled.nav`
   left: 0px;
   opacity: ${({ showNavBar }) => (showNavBar ? '1' : '0')};
   transition: all 0.5s ease-in-out;
+  z-index: 99;
 `;
 const NavBarContainer = styled.div`
   width: 100%;
@@ -120,6 +121,7 @@ const ShoppingCartIcon = styled(AiOutlineShoppingCart)`
   align-content: center;
   position: absolute;
   right: 25px;
+  cursor: pointer;
 
   &:hover {
     color: #03cefa;

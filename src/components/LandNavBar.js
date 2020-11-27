@@ -1,20 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 
 const LandNavBar = () => {
+    const [showMenu, setShowMenu] = useState(false);
+
+    const handleShowMenu = () => {
+        setShowMenu(true);
+        console.log(showMenu);
+    }
+    const handleHideMenu = () => {
+        setShowMenu(false);
+        console.log(showMenu);
+    }
+
+    console.log(showMenu);
+
     return (
         <NavBarContainer>
             <LinksContainer>
-               <NavLink>BIENVENDIOS</NavLink>
-               <NavLink>MENU</NavLink>
-               <NavLink>CONTACT</NavLink>
+                <NavLink to="/">BIENVENDIOS</NavLink>
+                <NavLink
+                    onMouseEnter={handleShowMenu}
+                    onMouseOut={handleHideMenu}
+                    to="/">MENU
+                </NavLink>
+                <NavLink to="/">CONTACT</NavLink>
             </LinksContainer>
             <ShoppingCartContainer>
-               <ShoppingCartIcon />
+                <ShoppingCartIcon />
             </ShoppingCartContainer>
+            <DropDownMenuContainer showMenu={showMenu} onMouseEnter={handleShowMenu} onMouseOut={handleHideMenu}>
+                <DropNavLink to="/">TACOS</DropNavLink>
+                <DropNavLink to="/">BURRITOS</DropNavLink>
+                <DropNavLink to="/">BURGERS</DropNavLink>
+                <DropNavLink to="/">SIDES</DropNavLink>
+                <DropNavLink to="/">DRNKS</DropNavLink>
+            </DropDownMenuContainer>
         </NavBarContainer>
     )
 }
@@ -22,11 +46,13 @@ const LandNavBar = () => {
 export default LandNavBar;
 
 const NavBarContainer = styled.nav`
+    margin-top: 10px;
     height: 80px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: relative;
 `;
 const LinksContainer = styled.div`
     width: 400px;
@@ -38,7 +64,6 @@ const LinksContainer = styled.div`
 
 `;
 const NavLink = styled(Link)`
-   color: #fefefe;
    color: rgba(255, 255, 255, 0.6);
    cursor: pointer;
    font-family: 'Archivo Black';
@@ -57,7 +82,6 @@ const NavLink = styled(Link)`
 const ShoppingCartContainer = styled.div`
    width: 30px;
    height: 50px;
-//    background: red;
    margin-right: 25px;
    display: flex;
    justify-content: flex-end;
@@ -71,4 +95,23 @@ const ShoppingCartIcon = styled(AiOutlineShoppingCart)`
     color: rgba(255, 255, 255, 1);;
     transition: 0.3s ease-in-out;
 }
-`;  
+`;
+const DropDownMenuContainer = styled.nav` 
+   height: 115px;
+   width: 200px;
+   padding-left: 20px;
+   visibility: ${({ showMenu }) => (showMenu ? 'visible' : 'hidden')};
+   position: absolute;
+   top: 35px;
+   right: 62px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+`;
+const DropNavLink = styled(Link)`
+   color: rgba(255, 255, 255, 1);
+   font-family: 'Archivo Black';
+   font-size: 16px;
+   margin: 0;
+   text-decoration: none;
+`;

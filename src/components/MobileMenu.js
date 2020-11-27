@@ -27,7 +27,7 @@ const MobMenuContainer = styled.aside`
   position: fixed;
   top: 80px;
   left: ${({ click }) => (click ? '0' : '-3000px')};
-  transition: all 0.5s ease;
+  transition: all 1.1s ease;
   overflow-y: scroll;
 
   @media screen and (max-width: 900px) {

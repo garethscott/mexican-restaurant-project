@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import LandImgBig from '../images/landing-img.jpg';
 import LandImgSmall from '../images/landing-img-small-1.jpg';
@@ -12,6 +12,7 @@ import { BsChevronDown } from 'react-icons/bs';
 const Landing = () => {
   const [swapLandImg, setSwapLandImg] = useState(false);
   const [swapLandLogo, setSwapLandLogo] = useState(false);
+  const [hideLogo, setHideLogo] = useState(false);
 
   const handleSwapImg = () => {
     if (window.innerWidth > 1795 || window.innerHeight > 1010) {
@@ -23,18 +24,36 @@ const Landing = () => {
     }
   }
 
+  useEffect(() => {
+    handleSwapImg();
+  }, []);
+
   window.addEventListener('resize', handleSwapImg);
 
+  const handleHideLogo = () => {
+    if (window.scrollY >= 100) {
+      setHideLogo(true);
+    } else if (window.scrollY < 100) {
+      setHideLogo(false);
+    }
+  }
+
+  window.addEventListener('scroll', handleHideLogo);
+
   return (
-    <LandingContainer swapLandImg={swapLandImg}>
+    <LandingContainer
+      swapLandImg={swapLandImg}
+    >
       <LandNavBar />
-      <LogoContainer>
+      <LogoContainer hideLogo={hideLogo}>
         {swapLandLogo ?
           (<LandingLogoLar src={LandingLogoLarge} />
           ) : (
             <LandingLogoMed src={LandingLogoMedium} />)}
       </LogoContainer>
-      <DownArrowLogo />
+      <DownArrowContainer hideLogo={hideLogo}>
+        <DownArrowLogo />
+      </DownArrowContainer>
     </LandingContainer>
   )
 }
@@ -52,6 +71,7 @@ const LandingContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin: 0;
+  // display: none;
 `;
 const LogoContainer = styled.div`
   width: 100%;
@@ -59,6 +79,8 @@ const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: ${({ hideLogo }) => (hideLogo ? '0' : '1')};
+  transition: all 0.7s ease-in-out;
 `;
 const LandingLogoMed = styled.img`
   width: min(100%, 850px);
@@ -75,9 +97,14 @@ const LandingLogoLar = styled.img`
     width: min(100%, 1050px);
   }
 `;
+const DownArrowContainer = styled.div`
+  opacity: ${({ hideLogo }) => (hideLogo ? '0' : '1')};
+  transition: all 1s ease-in-out;
+`;
 const DownArrowLogo = styled(BsChevronDown)`
   color: rgba(255, 255, 255);
   font-size: 100px;
   margin-right: 25px;
   margin-bottom: 20px;
+  
 `;

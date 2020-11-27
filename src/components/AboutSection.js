@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import AboutBgImage from '../images/about-image-small.png';
 import AboutBgImageNoFade from '../images/about-image-small-nofade.png'
@@ -39,6 +39,10 @@ const AboutSection = () => {
 
     window.addEventListener('resize', handleSwapBgImg);
 
+    useEffect(() => {
+        handleSwapBgImg();
+    });
+
     return (
         <AboutContainer
             showAboutImg={showAboutImg}
@@ -71,7 +75,7 @@ const AboutContainer = styled.div`
     background: url(${({ swapLargeFade }) => (swapLargeFade ? LgAboutImg : LgAboutImgNoFade)});
   `}
 
-  ${({ swapLargeFade }) => swapLargeFade &&`
+  ${({ swapLargeFade }) => swapLargeFade && `
     margin-top: -30px;
   `}
 `;
