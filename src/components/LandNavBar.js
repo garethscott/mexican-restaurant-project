@@ -104,6 +104,7 @@ const ShoppingCartContainer = styled.div`
    margin-right: 25px;
    display: flex;
    justify-content: flex-end;
+   cursor: pointer;
 `;
 const ShoppingCartIcon = styled(AiOutlineShoppingCart)`
    font-size: 35px;

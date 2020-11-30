@@ -13,6 +13,7 @@ const NavBar = () => {
   const [click, setClick] = useState(false);
   const [showNavBar, setShowNavBar] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
+  // const [menuBlue, setMenuBlue] = useState('rgba(255, 255, 255)');
 
   useEffect(() => {
     setShowDropDown(false);
@@ -38,28 +39,30 @@ const NavBar = () => {
 
   window.addEventListener('scroll', handleShowNavBar);
 
-  const handleShowDropDown = () => {
-    setShowDropDown(true);
-  }
+  const handleShowDropDown = () => setShowDropDown(true);
 
-  const handleHideDropDown = () => {
-    setShowDropDown(false);
-  }
+  const handleHideDropDown = () => setShowDropDown(false);
+
 
   return (
     <FixedNav showNavBar={showNavBar}>
       <NavBarContainer>
         <LinksContainer>
-          <NavLink
-            to="/"
+          <MenuContainer
             onMouseEnter={handleShowDropDown}
-            onMouseLeave={handleHideDropDown}>MENU
-          </NavLink>
+            onMouseLeave={handleHideDropDown}
+          >
+            <NavLink to="/">MENU</NavLink>
+            <DropDown
+              showdropdown={showDropDown}
+              onmouseenter={handleShowDropDown}
+              onmouseleave={handleHideDropDown}
+            />
+          </MenuContainer>
           <NavLink to="/">BIENVENDIOS</NavLink>
           <NavLogo src={PriNavLogo} alt="El Alma Logo" />
           <NavLink to="/">CONTACT</NavLink>
           <NavH1 to="/">WE ARE OPEN</NavH1>
-          <DropDown showdropdown={showDropDown} />
         </LinksContainer>
         <ShoppingCartIcon />
         <MobileLinksContainer>
@@ -108,6 +111,13 @@ const LinksContainer = styled.div`
   @media screen and (max-width: 900px) {
     display: none;
   }
+`;
+const MenuContainer = styled.div`
+  width: 60px;
+  height: 80px;
+  position: relative;
+  display: flex;
+  align-items: center;
 `;
 const NavLink = styled(Link)`
   color: #fefefe;

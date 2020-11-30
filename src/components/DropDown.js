@@ -3,9 +3,14 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { DropDownItems } from './DropDownItems';
 
+
 const DropDown = (props) => {
     return (
-        <DropDownContainer showdropdown={props.showdropdown}>
+        <DropDownContainer
+            showdropdown={props.showdropdown}
+            onMouseEnter={props.onmouseenter}
+            onMouseLeave={props.onmouseleave}
+        >
             <NavContainer>
                 {DropDownItems.map((item, index) => {
                     return (
@@ -25,11 +30,12 @@ const DropDownContainer = styled.nav`
    width: 200px;
    height: 170px;
    background: #782e59;
-   position: fixed;
-   top: ${({ showDropDown }) => (showDropDown ? '80px' : '-100px')};
-   right: 1060px;
+   position: absolute;
+   top: ${(props) => (props.showdropdown ? '80px' : '-200px')};
+   left: -15px;
    border-radius: 0px 0px 5px 5px;
    z-index: -50;
+   transition: all 0.5s ease-in-out;
 `;
 const NavContainer = styled.ul`
    height: 140px;
