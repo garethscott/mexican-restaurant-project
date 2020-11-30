@@ -13,10 +13,13 @@ const NavBar = () => {
   const [click, setClick] = useState(false);
   const [showNavBar, setShowNavBar] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
-  // const [menuBlue, setMenuBlue] = useState('rgba(255, 255, 255)');
+  const [menuBlue, setMenuBlue] = useState('#fdfdfd');
+  const [openHours, setOpenHours] = useState(false);
 
   useEffect(() => {
     setShowDropDown(false);
+    setMenuBlue('#fdfdfd');
+    handleOpenHours();
   }, []);
 
   const handleClick = () => setClick(!click);
@@ -39,10 +42,25 @@ const NavBar = () => {
 
   window.addEventListener('scroll', handleShowNavBar);
 
-  const handleShowDropDown = () => setShowDropDown(true);
+  const handleShowDropDown = () => {
+    setShowDropDown(true);
+    setMenuBlue('#03cefa');
+  }
 
-  const handleHideDropDown = () => setShowDropDown(false);
+  const handleHideDropDown = () => {
+    setShowDropDown(false);
+    setMenuBlue('#fdfdfd');
+  }
 
+  const handleOpenHours = () => {
+    const date = new Date();
+    const hours = date.getHours();
+    if (hours >= 11 && hours < 23) {
+      setOpenHours(true);
+    } else {
+      setOpenHours(false);
+    }
+  }
 
   return (
     <FixedNav showNavBar={showNavBar}>
@@ -52,7 +70,7 @@ const NavBar = () => {
             onMouseEnter={handleShowDropDown}
             onMouseLeave={handleHideDropDown}
           >
-            <NavLink to="/">MENU</NavLink>
+            <MenuNavLink menublue={menuBlue} to="/">MENU</MenuNavLink>
             <DropDown
               showdropdown={showDropDown}
               onmouseenter={handleShowDropDown}
@@ -62,7 +80,9 @@ const NavBar = () => {
           <NavLink to="/">BIENVENDIOS</NavLink>
           <NavLogo src={PriNavLogo} alt="El Alma Logo" />
           <NavLink to="/">CONTACT</NavLink>
-          <NavH1 to="/">WE ARE OPEN</NavH1>
+          {openHours ? (<NavH1 to="/">WE ARE OPEN</NavH1>
+          ) : (
+              <NavH1 to="/">WE ARE CLOSED</NavH1>)}
         </LinksContainer>
         <ShoppingCartIcon />
         <MobileLinksContainer>
@@ -119,6 +139,16 @@ const MenuContainer = styled.div`
   display: flex;
   align-items: center;
 `;
+const MenuNavLink = styled(Link)`
+  color: ${props => props.menublue};
+  // color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-family: 'Archivo Black';
+  font-size: 17px;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  cursor: pointer;
+`;
 const NavLink = styled(Link)`
   color: #fefefe;
   cursor: pointer;
@@ -133,7 +163,7 @@ const NavLink = styled(Link)`
     transition: 0.2s ease-in-out;
 }
 `;
-const NavH1 = styled.h1`
+const NavH1 = styled.h3`
   color: #fefefe;
   cursor: pointer;
   font-family: 'Archivo Black';

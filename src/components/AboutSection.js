@@ -47,8 +47,22 @@ const AboutSection = () => {
         <AboutContainer
             showAboutImg={showAboutImg}
             swapAboutImg={swapAboutImg}
-            swapLargeFade={swapLargeFade}>
-
+            swapLargeFade={swapLargeFade}
+        >
+            <AboutContent>
+                <h1>BIENVENDIOS</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
+                gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum
+                dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
+                gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
+                gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum
+                dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</p>
+            </AboutContent>
         </AboutContainer >
     )
 }
@@ -62,6 +76,9 @@ const AboutContainer = styled.div`
   background-size: cover;
   background-position: center;
   margin-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
   ${({ showAboutImg }) => showAboutImg && `
     margin-top: -20px;
@@ -78,6 +95,35 @@ const AboutContainer = styled.div`
   ${({ swapLargeFade }) => swapLargeFade && `
     margin-top: -30px;
   `}
+`;
+const AboutContent = styled.div`
+    width: 1000px;
+    height: 400px;
+    // background: lightcoral;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        font-family: 'Archivo Black';
+        letter-spacing: 0.15em;
+        font-size: 50px;
+        margin: 0;
+        color: #471633;
+        // background: red;
+        width: 460px;
+    }
+    p {
+        font-family: 'Archivo Black';
+        line-height: 1.4em;
+        letter-spacing: 0.1em;
+        text-align: center;
+        // background: yellow;
+        margin-top: 30px;
+        color: white;
+    }
 `;
 
 
