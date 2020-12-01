@@ -71,7 +71,7 @@ export default AboutSection;
 
 const AboutContainer = styled.div`
   width: 100%;
-  height: 907px;
+  height: 801px;
   background: url(${({ showAboutImg }) => (showAboutImg ? AboutBgImage : AboutBgImageNoFade)});
   background-size: cover;
   background-position: center;
@@ -100,7 +100,7 @@ const AboutContent = styled.div`
     width: 1000px;
     height: 400px;
     // background: lightcoral;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,7 +112,9 @@ const AboutContent = styled.div`
         font-size: 50px;
         margin: 0;
         color: #471633;
-        // background: red;
+        color: white;
+        height: 58px;
+        border-bottom: 5px solid white;
         width: 460px;
     }
     p {
@@ -121,7 +123,7 @@ const AboutContent = styled.div`
         letter-spacing: 0.1em;
         text-align: center;
         // background: yellow;
-        margin-top: 30px;
+        margin-top: 33px;
         color: white;
     }
 `;

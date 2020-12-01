@@ -3,12 +3,18 @@ import styled from 'styled-components';
 
 const MenuSection = () => {
     return (
-        <div>
+        <MenuContainer>
 
-        </div>
+        </MenuContainer>
     )
 }
 
 export default MenuSection;
+
+const MenuContainer = styled.div`
+    height: 800px;
+    width: 100%;
+    background: #782e59;
+`;
 
 
