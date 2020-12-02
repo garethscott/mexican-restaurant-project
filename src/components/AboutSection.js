@@ -117,7 +117,7 @@ const AboutContent = styled.div`
         margin: 0;
         color: #fdfdfd;
         padding-bottom: 3px; 
-        border-bottom: 5px solid white;
+        border-bottom: 5px solid #fdfdfd;
 
         // BIG SCREEN
         @media screen and (min-width: 1935px) {

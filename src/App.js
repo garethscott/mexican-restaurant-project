@@ -12,7 +12,7 @@ function App() {
       <NavBar />
       <Landing />
       <AboutSection />
-      <MenuSection />
+      <MenuSection heading={'TACOS'} />
     </Router>
   );
 }
